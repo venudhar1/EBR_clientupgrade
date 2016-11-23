@@ -80,6 +80,7 @@ elif [[ ${PLATFORM} == Linux ]]; then
         RC=19
         logger "INFO: NBU packages not found. exiting with error code $RC...."
     fi
+fi
         
 
 logger () {
