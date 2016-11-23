@@ -70,7 +70,7 @@ if [[ ${PLATFORM} == SunOS ]]; then
         logger "INFO: NBU packages not found. exiting with error code $RC...."
     fi
 elif [[ ${PLATFORM} == Linux ]]; then
-    if [[ -d ${TEMP_VARTMP}/NBU773]];then
+    if [[ -d ${TEMP_VARTMP}/NBU773 ]];then
         PKG_SOURCE=${TEMP_VARTMP}/NBU773
     elif [[ -d ${TEMP_VARTMP}/NBU7612 ]]; then
         PKG_SOURCE=${TEMP_VARTMP}/NBU7612
@@ -123,12 +123,20 @@ space_identifier (){
         RC=16
         return 16
     fi
-
+if [[ ${PLATFORM} == SunOS ]]; then
     if [ "$(df -k ${mntarg} |awk '/\// {print $4}')" -ge ${minsparg} ] ;then   # Min space is 800MB 
         echo pass 
     else
         echo fail
     fi
+elif [[ ${PLATFORM} == Linux ]]; then
+    
+    if [ "$(df -kP ${mntarg} |awk '/\// {print $4}')" -ge ${minsparg} ] ;then   # Min space is 800MB 
+        echo pass 
+    else
+        echo fail
+    fi
+fi
 }
 
 platform_identifier () {
