@@ -70,8 +70,17 @@ if [[ ${PLATFORM} == SunOS ]]; then
         logger "INFO: NBU packages not found. exiting with error code $RC...."
     fi
 elif [[ ${PLATFORM} == Linux ]]; then
-    if [[ -d ??????]]
-
+    if [[ -d ${TEMP_VARTMP}/NBU773]];then
+        PKG_SOURCE=${TEMP_VARTMP}/NBU773
+    elif [[ -d ${TEMP_VARTMP}/NBU7612 ]]; then
+        PKG_SOURCE=${TEMP_VARTMP}/NBU7612
+    elif [[ -d ${TEMP_VARTMP}/NBU7507 ]]; then
+        PKG_SOURCE=${TEMP_VARTMP}/NBU7507
+    else
+        RC=19
+        logger "INFO: NBU packages not found. exiting with error code $RC...."
+    fi
+        
 
 logger () {
 
