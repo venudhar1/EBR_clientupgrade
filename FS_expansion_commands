@@ -1,0 +1,13 @@
+
+
+lvextend -L +100M /dev/mapper/vg00-usrvol
+resize2fs /dev/mapper/vg00-usrvol
+
+[root@lxapp1011 ~]# df -hP /usr/openv/|awk '/\// {print $1}'
+
+/dev/mapper/vg00-usrvol
+
+SUSE 9:
+
+mkfs.reiserfs 
+

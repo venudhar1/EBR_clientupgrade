@@ -38,7 +38,7 @@
 
 
 ####
-VERSION="1.00"
+#VERSION="1.00"
 ####
 
 # Gobal variables
@@ -47,7 +47,7 @@ HNAME=$(uname -n)
 DATE=$(date "+%d%m%y %H:%M")
 PLATFORM=$(uname -s)
 VERSION=$(uname -r)
- 
+
 BASEDIR=/usr/openv
 TEMP_VARTMP=/var/tmp
 TEMP_CRASH=/var/crash
@@ -124,14 +124,14 @@ space_identifier (){
         return 16
     fi
 if [[ ${PLATFORM} == SunOS ]]; then
-    if [ "$(df -k ${mntarg} |awk '/\// {print $4}')" -ge ${minsparg} ] ;then   # Min space is 800MB 
+    if [ "$(df -k ${mntarg} |awk '/\// {print $4}')" -ge ${minsparg} ] ;then   
         echo pass 
     else
         echo fail
     fi
 elif [[ ${PLATFORM} == Linux ]]; then
     
-    if [ "$(df -kP ${mntarg} |awk '/\// {print $4}')" -ge ${minsparg} ] ;then   # Min space is 800MB 
+    if [ "$(df -kP ${mntarg} |awk '/\// {print $4}')" -ge ${minsparg} ] ;then   
         echo pass 
     else
         echo fail
@@ -162,7 +162,10 @@ if [[ "$PLATFORM" == "SunOS" ]]; then
             logger "INFO: [$PLATFORM] with version [$VERSION] is not supported"
             RC=15
         fi
-fi  
+elif [[ "$PLATFORM" == "Linux" ]] ; then
+            logger "INFO: [$PLATFORM] with version [$VERSION] is supported"
+            RC=0
+fi
 
 #    elif [ $PLARFORM = Linux ]; then
 #       echo "INFO: $PLATFORM with version $VERSION"
