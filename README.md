@@ -1,1 +1,1 @@
-# EBR_clientupgrade
+# System administrator essential scripts
