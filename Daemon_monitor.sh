@@ -5,7 +5,7 @@
 #set -x
 
 ################################################################################
-# (C) Copyright IBM Corporation, 2015
+# (C) Copyright IBM Corporation, 
 # All Rights Reserved
 #
 #      AUTHOR: Venudhar Chinthakuntla
