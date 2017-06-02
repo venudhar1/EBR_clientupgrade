@@ -9,7 +9,7 @@
 # All Rights Reserved
 #
 #      AUTHOR: Venudhar Chinthakuntla
-# DESCRIPTION: NBU 7.X.x data collection on script
+# DESCRIPTION: Basic NBU 7.X.x data collection on script
 #
 ###############################################################################
 #
