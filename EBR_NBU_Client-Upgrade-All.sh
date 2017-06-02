@@ -218,39 +218,38 @@ backup_core_files () {
     #
     #   side effects:   [NONE]
 
- ### Descoped taking of backup of /usr/openv,  as per NBU Team advise ***
+##Descoped taking of backup of /usr/openv,  as per NBU Team advise ***
 
- #   if [[ -f "${TEMP_CRASH}/${BASE_TAR}" || -f "${TEMP_VARTMP}/${BASE_TAR}" || -f "${TEMP_SWAP}/${BASE_TAR}" ]] ; then
- #
- #       logger "INFO: A Backup was taken today. Ignoring taking of backup again"
- #   else 
- #       #No backup pre-exists
- #       openvbackup=$(du -sk /usr/openv|awk '{print $1}')
- #
- #       if [[ $(space_identifier ${TEMP_CRASH} ${openvbackup}) == "pass" ]] ; then
- #           _available_mnt=${TEMP_CRASH}
- #       
- #       elif [[ $(space_identifier ${TEMP_VARTMP} ${openvbackup}) == "pass" ]] ; then
- #           _available_mnt=${TEMP_VARTMP}
- #
- #       elif [[ $(space_identifier ${TEMP_SWAP} ${openvbackup}) == "pass" ]] ; then
- #           _available_mnt=${TEMP_SWAP}
- #        else
- #           RC=13
- #      fi
- #
- #       if [[ ${RC} -eq 13 ]] ; then 
- #           logger "___"
- #           return 13
- #       fi
- #
- #       logger "INFO: taking backup of curret NB version....."
- #       tar -cf "${_available_mnt}/${BASE_TAR}" "$BASEDIR" > /dev/null 2>&1
- #
- #       if [ $? -ne 0 ]; then
- #            logger "ERROR: Failed to backup the [$BASEDIR] on [$HNAME]."
- #          RC=14
- #
+    if [[ -f "${TEMP_CRASH}/${BASE_TAR}" || -f "${TEMP_VARTMP}/${BASE_TAR}" || -f "${TEMP_SWAP}/${BASE_TAR}" ]] ; then
+ 
+        logger "INFO: A Backup was taken today. Ignoring taking of backup again"
+    else 
+        #No backup pre-exists
+        openvbackup=$(du -sk /usr/openv|awk '{print $1}')
+ 
+        if [[ $(space_identifier ${TEMP_CRASH} ${openvbackup}) == "pass" ]] ; then
+            _available_mnt=${TEMP_CRASH}
+        
+        elif [[ $(space_identifier ${TEMP_VARTMP} ${openvbackup}) == "pass" ]] ; then
+            _available_mnt=${TEMP_VARTMP}
+ 
+        elif [[ $(space_identifier ${TEMP_SWAP} ${openvbackup}) == "pass" ]] ; then
+            _available_mnt=${TEMP_SWAP}
+         else
+            RC=13
+       fi
+ 
+        if [[ ${RC} -eq 13 ]] ; then 
+            logger "___"
+            return 13
+        fi
+ 
+        logger "INFO: taking backup of curret NB version....."
+        tar -cf "${_available_mnt}/${BASE_TAR}" "$BASEDIR" > /dev/null 2>&1
+
+       if [ $? -ne 0 ]; then
+            logger "ERROR: Failed to backup the [$BASEDIR] on [$HNAME]."
+          RC=14
 
             logger "Taking backup of  config file.."
 
@@ -433,14 +432,6 @@ else
 
 fi
 
-#pre_checks
-#if [ $RC -ne  0 ]; then
-#   logger "ERROR: NBU_installation Failed with error code $RC."
-#    exit 1
-#else
- #   logger "......."
-
-#fi
 
 NB_shutdown
 if [ $RC -ne 0 ]; then
