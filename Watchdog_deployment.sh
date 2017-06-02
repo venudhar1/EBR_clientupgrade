@@ -11,7 +11,7 @@
 # All Rights Reserved
 #
 #      AUTHOR: Venudhar Chinthakuntla
-# DESCRIPTION: Script to disable netex.
+# DESCRIPTION: Sliksftm daemon watchdog script deployment and enable.
 #
 ###############################################################################
 #
