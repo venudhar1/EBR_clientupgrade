@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# relative path
+# Venudhar Chinthakuntla
+
+# Script to remove metadevice and recreate new devices as per the NBU latest version minimum space requirement.
+
 
 BASEDIR=/usr/openv
 TEMP_VARTMP=/var/tmp
@@ -190,7 +193,7 @@ basix_math () {
     #
     #   returns:        [NONE]
     #
-    #   requires:       [ Backup should not return error. Incase of NB Upgrade issues, we would have to restore the tar. ]
+    #   requires:       [NONE]
     #
     #   side effects:   [NONE]
 
